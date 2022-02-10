@@ -1,0 +1,17 @@
+.canvas {
+    background-color: black;
+    border-radius: 100px;
+    border: solid #ff0000 5px;
+    margin-right: 2em;
+}
+
+body {
+    overflow: hidden;
+    background-color: gray;
+
+}
+
+#pontos {
+    float: right;
+    padding-right: 2em;
+}
