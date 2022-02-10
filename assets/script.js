@@ -76,7 +76,7 @@ function start() {
         clearInterval(primeiro())
     }
   }
-//teste
+
   /*
   function getMousePosition(canvas, event) {
     let rect = canvas.getBoundingClientRect();
