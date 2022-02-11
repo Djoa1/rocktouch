@@ -15,7 +15,7 @@ document.body.appendChild(canvas)
 //document.getElementsByClassName('canvas').innerHTML = '<canvas id="someId"></canvas>';
 var pnt = document.querySelector('#pontos')
 
-
+/*
 var touch = {
     x: innerWidth/2,
     y: innerHeight/2,
@@ -31,16 +31,66 @@ var touch = {
         ctx.stroke()
         ctx.closePath()
     }
-}
+}*/
 
-function primeiro (){
+class Player {
+    constructor(x, y, radius, color) {
+    this.x = x
+    this.y = y
+    this.radius = 50
+    this.color = color
+}
+    draw () {
+        ctx.beginPath()
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false)
+        ctx.fillStyle = "#CCCCCC"
+        ctx.fill()
+        ctx.lineWidth = 5
+        ctx.strokeStyle = this.color
+        ctx.stroke()
+        ctx.closePath()
+    }
+}
+var xPlayer
+var yPlayer
+//(innerWidth/10)*(Math.floor(Math.random()*9)+1),
+//(innerHeight/10)*(Math.floor(Math.random()*9)+1),
+var timeFrame = 100
+function produzirFrame (){
+    
+    const player = new Player (
+        (innerWidth * Math.random()),
+        (innerHeight * Math.random()),
+        50,
+        ('#' + Math.floor(Math.random()*16777215).toString(16)))
+        xPlayer = player.x
+        yPlayer = player.y
+    var frame = setInterval(() => {
+        player.radius = player.radius - 1
+        player.draw()
+         if (player.radius == 5) {
+            clearInterval(frame)
+            ctx.clearRect(0, 0, innerWidth, innerHeight)  
+        } else if (acerto) {
+            clearInterval(frame)
+            ctx.clearRect(0, 0, innerWidth, innerHeight)
+            produzirFrame ()
+            acerto = false  
+        }
+    }, timeFrame -= 2)
+    }
+
+    //ctx.clearRect(0, 0, innerWidth, innerHeight)
+
+
+/*function produzirFrame (){
 var frame = setInterval(() => {
     touch.radius = touch.radius - 1
     touch.draw()
     if (touch.radius == 0){   
         ctx.clearRect(0, 0, innerWidth, innerHeight)
         clearInterval(frame)
-        primeiro()
+        
 
         touch.radius = 50
         touch.y = (innerHeight/10)*(Math.floor(Math.random()*9)+1)
@@ -48,20 +98,16 @@ var frame = setInterval(() => {
         touch.color = ('#' + Math.floor(Math.random()*16777215).toString(16))   
     }
 }, 100);
-}
+}*/
 
-
-function start() {
-    primeiro()
-  }
-  
+  var acerto = false
   var xMouse
   var yMouse
   canvas.addEventListener('click', (event) => {
       const react = canvas.getBoundingClientRect()
       xMouse =  event.clientX - react.left
       yMouse = event.clientY - react.top
-      acertou(xMouse, yMouse, touch.x, touch.y)
+      acertou(xMouse, yMouse, xPlayer, yPlayer)
   })
 
   function acertou (x1, y1, x2, y2){
@@ -72,9 +118,15 @@ function start() {
 
     if (compareXUm == compareXDois & compareYUm == compareYDois){
         console.log("acertou")
-        pnt.innerHTML = parseInt(pnt.innerHTML) + 1       
-        clearInterval(primeiro())
+        acerto = true
+        pnt.innerHTML = parseInt(pnt.innerHTML) + 1
+        
+
     }
+  }
+
+  function start() {
+    produzirFrame()
   }
 
   /*
