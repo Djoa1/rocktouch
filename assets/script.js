@@ -2,8 +2,8 @@ var canvas = document.createElement('canvas')
 //adicionar classe no elemento criado pra atribuir estilos
 canvas.className = ('canvas')
 //anexa no body
-canvas.width = window.innerWidth
-canvas.height = window.innerHeight
+canvas.width = (window.innerWidth-10)
+canvas.height = (window.innerHeight-80)
 if (canvas.getContext) {
     var ctx = canvas.getContext('2d')
 
@@ -62,8 +62,8 @@ var yPlayer
     function produzirFrame() {
 
         const player = new Player(
-            ((innerWidth / 10) * (Math.floor(Math.random() * 9) + 1)),
-            ((innerHeight / 10) * (Math.floor(Math.random() * 9) + 1)),
+            (((innerWidth-10)/ 10) * (Math.floor(Math.random() * 9) + 1)),
+            (((innerHeight-60) / 10) * (Math.floor(Math.random() * 9) + 1)),
             50,
             ('#' + Math.floor(Math.random() * 16777215).toString(16)))
         xPlayer = player.x
