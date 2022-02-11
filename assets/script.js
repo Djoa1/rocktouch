@@ -53,14 +53,16 @@ class Player {
 }
 var xPlayer
 var yPlayer
-//(innerWidth/10)*(Math.floor(Math.random()*9)+1),
-//(innerHeight/10)*(Math.floor(Math.random()*9)+1),
-var timeFrame = 100
+(innerWidth/10)*(Math.floor(Math.random()*9)+1),
+(innerHeight/10)*(Math.floor(Math.random()*9)+1),
+
+//(innerWidth * Math.random()),(innerHeight * Math.random()),
+
 function produzirFrame (){
     
     const player = new Player (
-        (innerWidth * Math.random()),
-        (innerHeight * Math.random()),
+        (innerWidth/10)*(Math.floor(Math.random()*9)+1),
+        (innerHeight/10)*(Math.floor(Math.random()*9)+1),
         50,
         ('#' + Math.floor(Math.random()*16777215).toString(16)))
         xPlayer = player.x
@@ -77,7 +79,7 @@ function produzirFrame (){
             produzirFrame ()
             acerto = false  
         }
-    }, timeFrame -= 2)
+    }, timeFrame -= 5)
     }
 
     //ctx.clearRect(0, 0, innerWidth, innerHeight)
@@ -124,8 +126,9 @@ var frame = setInterval(() => {
 
     }
   }
-
+  var timeFrame = 100
   function start() {
+    timeFrame = 100
     produzirFrame()
   }
 
