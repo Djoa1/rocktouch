@@ -65,6 +65,7 @@ function produzirFrame() {
         if (player.radius == 5) {
             clearInterval(frame)
             ctx.clearRect(0, 0, innerWidth, innerHeight)
+            xPlayer = yPlayer = xMouse = yMouse = 10000
         } else if (acerto) {
             clearInterval(frame)
             ctx.clearRect(0, 0, innerWidth, innerHeight)
@@ -93,7 +94,7 @@ function acertou(x1, y1, x2, y2) {
         } else {
         document.getElementById('pontos').style.backgroundColor = '#ffff00'
     }
-        
+
         console.log("acertou")
         acerto = true
         pnt.innerHTML = parseInt(pnt.innerHTML) + 1
