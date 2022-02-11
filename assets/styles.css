@@ -1,8 +1,10 @@
 .canvas {
-    background-color: black;
+    background-image: url('/assets/img/fundo.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
     border-radius: 50px;
     border: solid #ff0000 5px;
-
+    outline-color: blue;
 }
 
 body {
