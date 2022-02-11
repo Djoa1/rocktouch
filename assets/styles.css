@@ -10,9 +10,12 @@
 .titulo {
     font-family: 'Roboto Mono', monospace;
     color: white;
-    text-align: center;
-    font-size: 2em;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+    font-size: 1.5em;
     padding-top: 0.5em;
+    
     
 }
 
