@@ -1,3 +1,13 @@
+
+function start() {
+    if (timeFrame > 1){
+    console.log('jogo rodando')
+    } else {
+    timeFrame = 100
+    pnt.innerHTML = 0
+    produzirFrame()
+    }    
+}
 //adicionar classe no elemento criado pra atribuir estilos
 var canvas = document.createElement('canvas')
 //anexa no body
@@ -24,11 +34,7 @@ var yMouse
 var acerto = false
 //time e função de inicio
 var timeFrame
-function start() {
-    timeFrame = 100
-    pnt.innerHTML = 0
-    produzirFrame()
-}
+
 //instancia um objeto para ser usado
 class Player {
     constructor(x, y, radius, color) {
@@ -40,7 +46,7 @@ class Player {
     draw() {
         ctx.beginPath()
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false)
-        ctx.fillStyle = "#CCCCCC"
+        ctx.fillStyle = '#CCCCCC'
         ctx.fill()
         ctx.lineWidth = 5
         ctx.strokeStyle = this.color
@@ -66,13 +72,15 @@ function produzirFrame() {
             clearInterval(frame)
             ctx.clearRect(0, 0, innerWidth, innerHeight)
             xPlayer = yPlayer = xMouse = yMouse = 10000
+            timeFrame = 0
         } else if (acerto) {
             clearInterval(frame)
             ctx.clearRect(0, 0, innerWidth, innerHeight)
             produzirFrame()
             acerto = false
+           
             }
-        }, timeFrame -= 5)
+        }, timeFrame -= 4)
     }
 //função/metodo para relacionar os encontros de Xs e Ys (toque e circulo gerado)
 canvas.addEventListener('click', (event) => {
@@ -90,20 +98,20 @@ function acertou(x1, y1, x2, y2) {
 
     if (compareXUm == compareXDois & compareYUm == compareYDois) {
         if (((parseInt(pnt.innerHTML))%2)==0){
-        document.getElementById('pontos').style.backgroundColor = '#ff6347'
+        document.getElementById('pontos').style.backgroundColor = '#ff7F50'
         } else {
         document.getElementById('pontos').style.backgroundColor = '#ffff00'
     }
 
-        console.log("acertou")
+        console.log('acertou')
         acerto = true
         pnt.innerHTML = parseInt(pnt.innerHTML) + 1
     }
 }
 
 /* codigos deixado de lado ou substituido no processo de criação
-//document.body.innerHTML += '<canvas class="canvas"></canvas>'
-//document.getElementsByClassName('canvas').innerHTML = '<canvas id="someId"></canvas>';
+//document.body.innerHTML += '<canvas class='canvas'></canvas>'
+//document.getElementsByClassName('canvas').innerHTML = '<canvas id='someId'></canvas>';
     //(innerWidth * Math.random()),
     //(innerHeight * Math.random()),
     //(innerWidth/10)*(Math.floor(Math.random()*9)+1),
@@ -116,7 +124,7 @@ var touch = {
     draw: function () {
         ctx.beginPath()
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false)
-        ctx.fillStyle = "#CCCCCC"
+        ctx.fillStyle = '#CCCCCC'
         ctx.fill()
         ctx.lineWidth = 10
         ctx.strokeStyle = this.color
@@ -148,8 +156,8 @@ function getMousePosition(canvas, event) {
   let rect = canvas.getBoundingClientRect();
   let x = event.clientX - rect.left;
   let y = event.clientY - rect.top;
-  console.log("Coordinate x: " + x, 
-              "Coordinate y: " + y);
+  console.log('Coordinate x: ' + x, 
+              'Coordinate y: ' + y);
 }
 
 let canvasElem = document.querySelector("canvas");
