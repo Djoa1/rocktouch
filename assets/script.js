@@ -73,6 +73,12 @@ function produzirFrame() {
             ctx.clearRect(0, 0, innerWidth, innerHeight)
             xPlayer = yPlayer = xMouse = yMouse = 10000
             timeFrame = 0
+            pontos = pnt.innerHTML
+            if (pontos < 10){
+                alert(`Very little, try again! you scored ${pontos} points`)
+            } else {
+            alert(`Congratulations!! you scored ${pontos} points`)
+            }
         } else if (acerto) {
             clearInterval(frame)
             ctx.clearRect(0, 0, innerWidth, innerHeight)
