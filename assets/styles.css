@@ -41,3 +41,10 @@ div {
     background-color: black;
     font-family: 'Roboto Mono', monospace;
 }
+
+#space {
+    color: white;
+    font-size: 2rem;
+    padding-top: 10px;
+    font-family: 'Capriola', sans-serif;
+}
